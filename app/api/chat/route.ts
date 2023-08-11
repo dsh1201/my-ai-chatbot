@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     'content': process.env.PROMPT
   }, ...histories.slice(-3, -1), {
     'role': 'user',
-    'content': `Please review and revise the following code: """${question}""" print the revised code`
+    'content': `Please review and revise the following code: """${question}""" print the revised code.`
   }]
 
   const res = await openai.createChatCompletion({
