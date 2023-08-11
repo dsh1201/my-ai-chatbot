@@ -18,13 +18,13 @@ export async function POST(req: Request) {
     'content': process.env.PROMPT
   }, ...histories.slice(-3, -1), {
     'role': 'user',
-    'content': `用戶輸入：${question}`
+    'content': `Please review and revise the following code: """${question}""" print the revised code`
   }]
 
   const res = await openai.createChatCompletion({
     model: 'gpt-3.5-turbo-16k',
     messages,
-    temperature: 0.5,
+    temperature: 0.2,
     stream: true
   })
 
